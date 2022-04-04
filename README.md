@@ -15,4 +15,4 @@
 - [ ] +Is the profile displaying other graphs beside the two mandatory ones?
 - [ ] +Did the student generated their own GraphiQL?
 - [ ] +Does the UI respect the good practicies?
-- [ ] +Do you think in general this project is well done?# graphql_project
+- [ ] +Do you think in general this project is well done?

@@ -5,16 +5,62 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="graph.css">
     <title>Graphql</title>
+    <script type="module" src="app.js" defer></script>
 </head>
 <body>
-    <section id="profile"></section> 
-    <section id="statistics"></section> 
+    <section id="profile" >
+        <div class="welcome_wrapper flex">
+            <h3 class="who">Welcome, </h3>
 
+            <div class="language_wrapper">
+                <select name="language" id="language">
+                    <option value="GO">Go</option>
+                    <option value="DIV01">Div-01</option>
+                    <option value="JS">JS</option>
+                </select>
+            </div>
+        </div>
 
-    <h1>Graphql</h1>
+        <div class="exp_wrapper flex">
+            <div class="exp_circle">
+                <svg  viewBox="0 0 100 100" >
+                    <circle cx="50" cy="40" r="30" stroke="#616161" stroke-width="1" />
+                </svg>
+            </div>
+        </div>
 
+        <div class="projects_wrapper ">
+            <!--  PROJECTS Title  -->
+            <div class="projects_title flex">
+                <p>Transtaction history</p>
+                <p>Total : <span class="projects_total">25</span></p>
+            </div>
 
-    <script src="app.js"></script>
+            <!--  PROJECTS  -->
+            <div class="all_projects">
+            </div>
+        </div>
+
+        <!-- ARROW TO NEXT PAGE -->
+        <!-- <div class="next_page_wrapper">
+            <svg  class="arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="26" viewBox="0 0 24 26" fill="none">
+                <path d="M10.9393 25.0607C11.5251 25.6464 12.4749 25.6464 13.0607 25.0607L22.6066 15.5147C23.1924 14.9289 23.1924 13.9792 22.6066 13.3934C22.0208 12.8076 21.0711 12.8076 20.4853 13.3934L12 21.8787L3.51472 13.3934C2.92893 12.8076 1.97918 12.8076 1.3934 13.3934C0.807612 13.9792 0.807612 14.9289 1.3934 15.5147L10.9393 25.0607ZM10.5 0L10.5 24H13.5L13.5 0L10.5 0Z" fill="#F87878"/>
+            </svg>
+        </div> -->
+        
+    </section> 
+    <section id="statistics">
+        
+        <div class="graph">
+
+        </div>
+        <div class="graph">
+
+        </div>
+
+    </section> 
+
 </body>
 </html>
