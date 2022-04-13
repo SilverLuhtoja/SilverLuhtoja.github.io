@@ -1,7 +1,0 @@
-@import "main.css";
-
-.graph{
-    height: 50vh;
-    background-color: var(--main-color);
-    border: 2px solid var(--second-color);
-}

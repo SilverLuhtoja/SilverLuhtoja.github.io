@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox=" 0  0 200 200"  width="200" height="200">
+    <circle r="46" cx="100" cy="100"  fill="black" stroke="lightblue" stroke-width="96" stroke-dasharray="calc(100 * (3.1416 * 96)/100) calc(3.1416 * 96)" transform="rotate(-90) translate(-200)"/> 
+    <circle r="46" cx="100" cy="100"  fill="none" stroke="red" stroke-width="96" stroke-dasharray="calc(90 * (3.1416 * 96)/100) calc(3.1416 * 96)" transform="rotate(-90) translate(-200)"/> 
+    <circle r="46" cx="100" cy="100"  fill="none" stroke="green" stroke-width="96" stroke-dasharray="calc(75 * (3.1416 * 96)/100) calc(3.1416 * 96)" transform="rotate(-90) translate(-200)"/>
+
+
+
+   <text x="100" y="10" class="chart_text" >JS</text>
+   <text x="calc(100 * (3.1416 * 96)/100)" y="calc(50 * (3.1416 * 96)/100)" class="chart_text" >JS</text>
+</svg>

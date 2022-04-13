@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="graph.css">
+    <link rel="stylesheet" href="./svg/svg.css">
     <title>Graphql</title>
     <script type="module" src="app.js" defer></script>
+    <!-- <script  type="module" src="./graph.js" defer></script> -->
 </head>
 <body>
     <section id="profile" >
@@ -17,32 +18,33 @@
             <div class="language_wrapper">
                 <select name="language" id="language">
                     <option value="GO">Go</option>
-                    <option value="DIV01">Div-01</option>
+                    <option value="DIV01" selected>Div-01</option>
                     <option value="JS">JS</option>
                 </select>
             </div>
         </div>
 
-        <div class="exp_wrapper flex">
-            <div class="exp_circle">
-                <svg  viewBox="0 0 100 100" >
-                    <circle cx="50" cy="40" r="30" stroke="#616161" stroke-width="1" />
-                </svg>
-            </div>
-        </div>
-
-        <div class="projects_wrapper ">
+        
+        <div class="projects_wrapper hide">
             <!--  PROJECTS Title  -->
-            <div class="projects_title flex">
+            <div class="projects_title flex ">
                 <p>Transtaction history</p>
-                <p>Total : <span class="projects_total">25</span></p>
+                <p>Total : <span class="projects_total"></span></p>
+                <div class="trans_btn rotate flex">></div>
             </div>
-
+            
             <!--  PROJECTS  -->
-            <div class="all_projects">
+            <div class="all_projects ">
             </div>
         </div>
-
+        
+        <div class="exp_wrapper flex ">
+            <div class="exp_circle">
+            </div>
+             <div class="audits_bars">
+            </div> 
+           
+        </div>
         <!-- ARROW TO NEXT PAGE -->
         <!-- <div class="next_page_wrapper">
             <svg  class="arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="26" viewBox="0 0 24 26" fill="none">
@@ -51,14 +53,39 @@
         </div> -->
         
     </section> 
-    <section id="statistics">
-        
-        <div class="graph">
+    <section id="statistics"  >
 
+        <h1>Skills</h1>
+        <div class="graph-container flex">
+            <div class="graph1">
+            </div>
         </div>
-        <div class="graph">
 
-        </div>
+        <div class="graph-container flex" >
+
+            <div class="flex">
+                <p>TimePeriod</p>
+                <select name="time" id="time">
+                <option value="week" selected>week</option>
+                <option value="month" >month</option>
+                <option value="half-year">half-year</option>
+            </select>
+            </div>
+            <div class="graph2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200 ">
+                <rect width="200" height="100" />
+                        <polyline
+                    fill="none"
+                    stroke="#0074d9"
+                    stroke-width="3"
+                    points="
+                    0,100
+                    20,60
+                    40,80
+                    60,20"/>
+                </svg>
+            </div> 
+    </div>
 
     </section> 
 

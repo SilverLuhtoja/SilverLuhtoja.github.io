@@ -7,17 +7,13 @@
     --fourth-color:#545454;
     --fifth-color :#C4C4C4;
 
-
-
-
-
     /* FONT */
     --big-font:24px;
     --med-font:18px
     --small-font:14px;
     --letter-spacing:3px;
 
-    
+    --min-width:375px;
 }
 
 *{
@@ -29,12 +25,8 @@
 body{
    background:var(--second-color);
    color: white;
+   min-width: var(--min-width);
    /* overflow: hidden; */
-}
-section{
-    /* width: 100vw; */
-    height: 100vh;
-    z-index: 1;
 }
 
 .flex{
@@ -43,16 +35,61 @@ section{
     place-items: center;
     flex-wrap: wrap;
 }
+
 /* //////////////////////////////////////////////////////////////////////////////// */
 /*   PROFILE  SECTION //////////////////////////////////////////////////////////////////// */
 section#profile{
-    /* width: 98%; */
     font-size: var(--med-font);
 }
-section#profile .exp_wrapper, .projects_wrapper {
+section#profile .projects_wrapper {
     height: 40vh;
+    /* margin: 0.5em; */
+    background-color: var(--main-color);
+    overflow: hidden;
+    color: rgba(21, 163, 92, 0.914);
+    transition: 1s all ease;
+}
+
+.hide{
+    height: 7vh !important;
+}
+
+.trans_btn{
+    height: 36px;
+    width: 36px;
+    font-size:30px;
+    background-color: var(--third-color);
+    text-align: start;
+    transform: rotate(450deg);
+    transition: 0.5s all ease;
+    border-radius: 50%;
+
+}
+.rotate{
+    transform: rotate(-450deg);
+    box-shadow: 0 0 1px white;
+    animation-name: blink;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+
+}
+@keyframes blink {
+    0%{
+        box-shadow: 0 0 1px var(--fifth-color);
+    }
+    50%{
+        box-shadow: 0 0 10px var(--fifth-color);
+        
+    }
+    100%{
+        box-shadow: 0 0 1px var(--fifth-color);
+    }
+}
+section#profile .exp_wrapper{
+    /* height: 40vh; */
     margin: 0.5em;
     background-color: var(--main-color);
+    color: rgba(21, 163, 92, 0.914);
 }
 
 
@@ -78,43 +115,17 @@ section#profile .welcome_wrapper .language_wrapper select:hover{
     background-color: var(--main-color);
     color: white;
 }
-
-
-/*  EXP WRAPPER *****************************************************/
-
-section#profile .exp_wrapper{
-    font-size: var(--med-font);
-    justify-content: space-between;
-    place-items: start;
-}
-section#profile .exp_wrapper span{
-    font-size: var(--big-font);
-}
-
-.exp_circle{
-    position: relative;
-    width: 100%;
-    max-width: 400px;
-    margin: auto;
-    max-height:40vh;
-    z-index: 1;
-}
-.exp_text{
-    position: absolute;
-    color: wheat;
-    font-size: var(--big-font);
-    top: 65%;
-    left: 50%;
-    transform: translate(-50%);
-    text-align: center;
-    z-index: 10;
+section#profile .welcome_wrapper h3{
+    margin-left: 10px;
 }
 
  /* PROJECTS WRAPPER ***********************************************/
 section#profile .projects_wrapper .projects_title{
     justify-content: space-between;
-    height: 10%;
+    padding: 6px;
+    font-size: var(--big-font);
 }
+
 section#profile .projects_wrapper .projects_total{
     font-size: var(--big-font);
 }
@@ -130,9 +141,18 @@ section#profile .projects_wrapper .single_project{
     background-color: var(--fourth-color);
 }
 section#profile .projects_wrapper .single_project .single_project_name{
-    flex: 1;
+    flex: 4;
     text-align: left;
     margin-left: 1em;
+}
+section#profile .projects_wrapper .single_project .single_project_time{
+    flex: 2;
+    text-align: left;
+    
+}
+section#profile .projects_wrapper .single_project .single_project_exp{
+    flex: 1;
+    text-align: left;
 }
 
 
@@ -154,3 +174,19 @@ section#profile .next_page_wrapper{
 
 
 
+/************************************************************************************************/
+/* SECTION STATISTICS ***************************************************************************/
+/************************************************************************************************/
+
+section#statistics{
+    flex-direction: column;
+}
+section#statistics h1{
+    width: 100%;
+    background-color: var(--main-color);
+    padding: 4px;
+    font-size: calc(var(--big-font)*1);
+    display: block;
+    text-align: center;
+
+}

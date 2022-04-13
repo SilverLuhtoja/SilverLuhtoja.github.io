@@ -1,0 +1,43 @@
+@import "main.css";
+
+svg text{
+    z-index: 100;
+}
+.graph1{
+    z-index: 0;
+    min-width: var(--min-width);
+    max-width: 600px;
+}
+.graph2{
+    background-color: red;
+    min-width: var(--min-width);
+    min-height: 200px;
+}
+/* 
+
+/* EXP SVG //////////////////////////// */
+.exp_circle svg {
+    border-radius: 50%;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+
+/* AUDITS SVG //////////////////////////// */
+.audits_bars{
+    min-width: calc(var(--min-width) - 1em);
+}
+.text {
+    fill: white;
+    text-anchor: middle;
+    alignment-baseline: middle;
+    transform-origin: 50%;
+    font-size: 8px;
+}
+.ratio_text{
+    font-size: 6px;
+    color: var(--text-color);
+}
+
