@@ -24,6 +24,7 @@ query Transactions($offset: Int, $Id : Int, $path: String) {
                 amount
                 path
                 object {
+                  type
                    name
                 }
                 
@@ -31,25 +32,6 @@ query Transactions($offset: Int, $Id : Int, $path: String) {
         }
 `;
 
-
-export const getXp = `
-query getXp($Id: Int, $offset: Int) {
-  transaction(
-    where: {userId: {_eq: $Id}, type: {_in: ["xp", "up", "down"]}, _and: [{path: {_iregex: "/johvi/div-01/"}}, {path: {_nregex: "/johvi/div-01/piscine-js"}}, {path: {_nregex: "/johvi/piscine-go"}}]}
-    offset: $offset
-    order_by: {objectId: asc}
-  ) {
-    amount
-    path
-    createdAt
-    type
-    object {
-      id
-      name
-    }
-  }
-}
-`;
 
 
 export const getAudits = `
@@ -87,4 +69,47 @@ export const getSkills = `
         type
       }
     }
+`;
+
+
+export const OnlyDivPart = `
+  query($Id: Int){ progress 
+    (where: { 
+      userId: { _eq: $Id }
+      _and: [
+        {grade: {_neq: NaN}},
+        {grade: {_neq: 0}}
+      ]
+      _or: [
+      {object: {type: {_eq: "project"}}},
+      {object: {type: {_eq: "piscine"}}}
+      ]
+    })
+    {
+      objectId
+      createdAt
+      object {
+        type
+        name
+      }
+    }
+  }`;
+
+export const pointsRequestByObjectID = `
+query($objectId: Int,$Id :  Int){ 
+  transaction(
+      where: {
+        userId: { _eq: $Id }
+				objectId: {_eq: $objectId}
+      }
+    ) {
+	    amount
+      path
+      type
+      createdAt
+      object {
+        name
+      }
+    }
+  }
 `;

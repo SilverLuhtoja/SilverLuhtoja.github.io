@@ -2,7 +2,6 @@ export class Exp{
     constructor(radius) {
       this.radius = radius
       this.middlePoint = radius/2
-      this.color = "grey"
     }
 
     generateSVG(element,obj){
@@ -13,9 +12,10 @@ export class Exp{
         <svg viewBox='0 0 ${this.radius} ${this.radius}'>
           <g >
           <circle cx='${this.middlePoint}' cy='${this.middlePoint}' r='${
-            this.middlePoint
-          }' stroke='#616161' stroke-width='1' />
-          <rect y="${percent}" width="100" height="100"  fill="grey" /> 
+          this.middlePoint
+        }'  stroke-width='2' 
+        />
+          <rect y="${percent}" width="100" height="100"/> 
           ${this.generateText(obj)}
           </g>
         </svg>

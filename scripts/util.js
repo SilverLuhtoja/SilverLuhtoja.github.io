@@ -48,3 +48,58 @@ export const  calculateTotal = (arr) => {
   });
   return Math.round(total / 10000) * 0.01
 }
+
+// Days from timestamp
+export function calculateDays(nr) {
+  return Math.floor(nr / (1000 * 60 * 60 * 24));
+}
+
+// get normal date string
+export function formatTimeByDays(days) {
+  const currentTime = new Date();
+  const pastTime = new Date(currentTime.getTime() - 1000 * 60 * 60 * 24 * days);
+  return `${pastTime.getFullYear()}-${String(pastTime.getMonth() + 1).padStart(
+    2,
+    '0'
+  )}-${String(pastTime.getDate()).padStart(2, '0')}`;
+}
+
+// normal bubble sort
+export function sortArray(arr) {
+  let len = arr.length;
+  for (let i = 0; i < len; i++) {
+    for (let j = 0; j < len - 1; j++) {
+      if (arr[j].pastDays > arr[j + 1].pastDays) {
+        let tmp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = tmp;
+      }
+    }
+  }
+  return arr;
+}
+
+// calculate amount on the same date
+export function combineDates(arr) {
+// Making deep copy (will not change original array)
+  let newArr = JSON.parse(JSON.stringify(arr))
+  let total = 0;
+  let startCounting = true;
+  for (let i = 0; i < newArr.length - 1; i++) {
+    if (newArr[i].time == newArr[i + 1].time) {
+      if (startCounting) {
+        total = newArr[i].amount;
+        startCounting = false;
+      }
+      total += newArr[i + 1].amount;
+      newArr[i] = '';
+    } else {
+      if (newArr[i - 1] == '') {
+        newArr[i].amount = total;
+      }
+      total = 0;
+      startCounting = true;
+    }
+  }
+  return newArr.filter(item => item);
+}

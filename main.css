@@ -1,17 +1,17 @@
 /* GLOBAL VARIABLES */
 :root{
     /* Background Colors */
-    --main-color: #323232;
-    --second-color: #4B4B4B;
-    --third-color: #616161;
-    --fourth-color:#545454;
-    --fifth-color :#C4C4C4;
+    --main-color: #585858b5;
+    --background-color: #2a2a2a;
+    --fourth-color:#48895ef8;
+    --fifth-color :#3e7d77dd;
 
     /* FONT */
-    --big-font:24px;
-    --med-font:18px
-    --small-font:14px;
+    --big-font:20px;
+    --med-font:14px
+    --small-font:10px;
     --letter-spacing:3px;
+    --text-color: white;
 
     --min-width:375px;
 }
@@ -23,8 +23,8 @@
 }
 
 body{
-   background:var(--second-color);
-   color: white;
+   background:var(--background-color);
+   color: var(--text-color);
    min-width: var(--min-width);
    /* overflow: hidden; */
 }
@@ -36,33 +36,41 @@ body{
     flex-wrap: wrap;
 }
 
-/* //////////////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////////////////// */
 /*   PROFILE  SECTION //////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////////////////// */
 section#profile{
     font-size: var(--med-font);
 }
 section#profile .projects_wrapper {
-    height: 40vh;
-    /* margin: 0.5em; */
+    height: 38vh;
     background-color: var(--main-color);
     overflow: hidden;
-    color: rgba(21, 163, 92, 0.914);
+
+    margin-top: 4px;
+    color: var(--text-color);
     transition: 1s all ease;
+}
+section#profile .exp_wrapper {
+    margin: 0.5em;
+    background-color: var(--main-color);
+    color: var(--text-color);
 }
 
 .hide{
-    height: 7vh !important;
+    height: 46px !important;
 }
 
 .trans_btn{
     height: 36px;
     width: 36px;
     font-size:30px;
-    background-color: var(--third-color);
+    background-color: var(--fifth-color);
     text-align: start;
     transform: rotate(450deg);
     transition: 0.5s all ease;
     border-radius: 50%;
+    cursor: pointer;
 
 }
 .rotate{
@@ -85,36 +93,26 @@ section#profile .projects_wrapper {
         box-shadow: 0 0 1px var(--fifth-color);
     }
 }
-section#profile .exp_wrapper{
-    /* height: 40vh; */
-    margin: 0.5em;
-    background-color: var(--main-color);
-    color: rgba(21, 163, 92, 0.914);
-}
 
 
-/* WELCOME WRAPPER */
+/* WELCOME WRAPPER **************************************************/
 section#profile .welcome_wrapper{
     height: 8vh;
     width: 100%;
-    background: var(--main-color);
+    padding: 1.5em 0 ;
     justify-content: space-between;
     font-size: var(--big-font);
     letter-spacing:var(--letter-spacing);
     flex-wrap: nowrap;
 }
 section#profile .welcome_wrapper .language_wrapper select{
-    background-color: var(--fifth-color);
-    /* width: 60px; */
     height:  8vh;
     font-size: var(--big-font);
-    word-wrap:norma;
     text-align: center;
+    color: var(--text-color);
+    background-color: var(--fourth-color);
 }
-section#profile .welcome_wrapper .language_wrapper select:hover{
-    background-color: var(--main-color);
-    color: white;
-}
+
 section#profile .welcome_wrapper h3{
     margin-left: 10px;
 }
@@ -132,19 +130,27 @@ section#profile .projects_wrapper .projects_total{
 section#profile .projects_wrapper .all_projects{
     overflow: auto;
     height: 86%;
+    padding-bottom: 20px;
 }
 section#profile .projects_wrapper .single_project{
     font-size: var(--small-font);
     justify-content: start;
-    margin: 0.3em;
-    padding: 0.2em;
+    margin: 0.4em;
+    padding: 0.3em;
     background-color: var(--fourth-color);
 }
+
+section#profile .projects_wrapper .single_project .single_project_type{
+    width:80px;
+}
 section#profile .projects_wrapper .single_project .single_project_name{
-    flex: 4;
     text-align: left;
     margin-left: 1em;
+    width: 300px;
+    overflow: hidden;
+
 }
+
 section#profile .projects_wrapper .single_project .single_project_time{
     flex: 2;
     text-align: left;
@@ -156,37 +162,28 @@ section#profile .projects_wrapper .single_project .single_project_exp{
 }
 
 
-/*  NEXT PAGE WRAPPER *********************************************/
-section#profile .next_page_wrapper{
-    height: 8vh;
-    background-color: var(--fifth-color);
-    position: relative;
-}
-
-.arrow {
-    position: absolute;
-    bottom: calc(8vh / 4);
-    left: 50%;
-    transform: translateX(-50%) scale(1.5);
-}
-
-
-
 
 
 /************************************************************************************************/
 /* SECTION STATISTICS ***************************************************************************/
 /************************************************************************************************/
 
-section#statistics{
+.statistics .flex{
+    justify-content: start;
     flex-direction: column;
 }
-section#statistics h1{
+.statistics h1{
     width: 100%;
     background-color: var(--main-color);
-    padding: 4px;
+    padding: 8px;
     font-size: calc(var(--big-font)*1);
     display: block;
     text-align: center;
+}
 
+
+@media only screen and (max-width: 600px) {
+    section#profile .projects_wrapper .single_project .single_project_name {
+        width: 140px;
+    }
 }
