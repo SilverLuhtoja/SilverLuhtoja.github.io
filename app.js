@@ -71,8 +71,6 @@ async function fetch(func) {
 }
 
 const update = async () => {
-  console.log(`%cCURRENT MODUL IS  ${language.value}`, 'color:orange');
-  console.log("UPDATEING");
   transactionData = await fetch(getAllTransactions(0));
   sortByDates(transactionData);
   populateExpGraph();
@@ -81,7 +79,6 @@ const update = async () => {
 
 
 const init = async () => {
- console.log('FETCHING DATA');
  transactionData = await fetch(getAllTransactions(0));
  onlyDIV = await divRequest(id);
  offset = 0;
@@ -158,8 +155,7 @@ const getAllSkills = async (nr) => {
   return queryFetch(getSkills, variables).then(data => {
     data.data.transaction.forEach(item => allData.push(item));
      if (allData.length == 0) {
-       console.log(allData);
-       return;
+       return allData;
      }
     if (allData.length % 50 == 0) {
       offset += 50;
