@@ -8,8 +8,6 @@ svg text{
     min-width: var(--min-width);
 }
 
-/* 
-
 /* EXP SVG //////////////////////////// */
 .exp_circle svg {
     border-radius: 50%;
@@ -70,6 +68,9 @@ svg text{
 }
 .time_container{
     fill: var(--main-color);
+    opacity: 0.5;
+    stroke-width: 0.5;
+    stroke: var(--text-color);
 }
 .time_selection{
     position: absolute;

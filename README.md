@@ -1,18 +1,11 @@
-### Functionals
-- [ ]  Does the profile have three sections?
-- [ ]  Try to confirm if the content on the three sections are correct, using the GraphiQL.
-- [ ]  Is the content present on the three sections correct?
-- [ ]  Does the profile present a 4th section with graph statistics?
-- [ ]  Does this section have at least two different graphs?
-- [ ]  Try to confirm if the content on the graphs are correct.
-- [ ]  Is the content on the graphs correct?
-- [ ]  Try to access the profile from the host domain.
-- [ ]  Is the profile being hosted (active/live/online)?
-- [ ]  General
-- [ ]  Does the project have at least the mandatory queries (nested, normal and using arguments)?
-## Bonus
-- [ ] +Is the profile displaying other information beside the three mandatory sections?
-- [ ] +Is the profile displaying other graphs beside the two mandatory ones?
-- [ ] +Did the student generated their own GraphiQL?
-- [ ] +Does the UI respect the good practicies?
-- [ ] +Do you think in general this project is well done?
+# Kood-01 Personal Profile - QRAPHQL - Author: SilverL
+
+## What can you do and see ? 
+1. Can search your profile info by your Gitea name.
+2. Can see your transaction history (What type is given exercise, its name , time based on when you pushed to audit and its xp)
+3. Can see your overall xp and amount of given section (EX: Piscine-go max is 1.02Mb , but you received maybe 600Kb, then circle will be filled half way)
+4. Can see your audits and its ratio with bar svg. Bigger one is always max of 1 and lower is scaled by ratio amount.
+5. Can see your maximum skills based (GO, JS, HTML, CSS, SQL, DOCKER)
+6. Lastly, the time table. You can pick date, which will show xp points based now and selected value
+( if you have received more than one xp in given day, they will be added together and shown as single dot on a graph)
+
