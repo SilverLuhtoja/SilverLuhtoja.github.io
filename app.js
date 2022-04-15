@@ -28,6 +28,7 @@ const language = document.getElementById('language');
 const trans_btn = document.querySelector('.trans_btn');
 const name_btn = document.getElementById('name_btn');
 const name_input = document.getElementById('name_input');
+const timePeriod = document.getElementById('time'); 
 const currentTime = new Date();
 let allSkills,auditsIn,auditsOut,transactionData,total,onlyDIV;
 // first Pass
@@ -39,12 +40,7 @@ let current_path = '/johvi/div-01/';
 const getIdQuery = async variables => {
   return queryFetch(getId, variables).then(data => data.data.user[0].id);
 };
-// let id = await getIdQuery({ userName: name_input.value });
-let id = 1905
-
-
-
-
+let id = await getIdQuery({ userName: name_input.value });
 
 // Show transactions when arrow is clicked
 trans_btn.addEventListener('click', () => {
@@ -77,7 +73,7 @@ async function fetch(func) {
 const update = async () => {
   console.log(`%cCURRENT MODUL IS  ${language.value}`, 'color:orange');
   console.log("UPDATEING");
-  transactionData = await fetch(getAllTransactions());
+  transactionData = await fetch(getAllTransactions(0));
   sortByDates(transactionData);
   populateExpGraph();
   populateTransactions();
@@ -86,7 +82,7 @@ const update = async () => {
 
 const init = async () => {
   console.log("FETCHING DATA");
-  transactionData = await fetch(getAllTransactions());
+  transactionData = await fetch(getAllTransactions(0));
   onlyDIV = await divRequest(id);
   auditsIn = await fetch(getAllAudits(0, 'up'));
   auditsOut = await fetch(getAllAudits(0, 'down'));
@@ -103,6 +99,8 @@ const init = async () => {
   await populateSecondGraph(onlyDIV);
 };
 
+
+//  NAME CHANGE
 name_btn.addEventListener('click', async function () {
   if (currentName != name_input.value) {
     let lastId = id
@@ -110,11 +108,10 @@ name_btn.addEventListener('click', async function () {
       return id = getIdQuery({ userName: currentName })
     })
       if(id != lastId ){
-        console.log(id);
         currentName = name_input.value;
-        console.log("NEW NAME:", currentName);
         totalDIVXP = 0;
         fullDiv = [];
+        timePeriod.value = "week"
         current_path = '/johvi/div-01/';
         language.value = 'DIV01';
         await init();
@@ -129,8 +126,9 @@ const getAllAudits = async (nr,type) => {
   nr = offset
   let variables = { offset: nr, path: current_path, Id: id, type: type};
   return queryFetch(getAudits, variables).then(data => {
-    if(data.data.transaction.length == 0){
-      return
+    if (data.data.transaction.length == 0) {
+      offset = 0;
+      return allData;
     }
     data.data.transaction.forEach(item => allData.push(item));
     if (allData.length % 50 == 0) {
@@ -225,11 +223,10 @@ const getAllTransactions = async (nr) => {
   nr = offset;
   let variables = {offset: nr, path: current_path, Id: id };
   return queryFetch(getTransactions, variables).then(data => {
-    if(data.data.transaction.length == 0 ){
-      return
+    if (data.data.transaction.length == 0) {
+      return allData;
     }
     data.data.transaction.forEach(item => allData.push(item));
-    
     if (allData.length % 50 == 0) {
       offset += 50;
       return getAllTransactions(offset);
@@ -317,7 +314,6 @@ async function populateFirstGraph(arr) {
 // GRAPH 2 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////
 async function populateSecondGraph(arr) {
-  const timePeriod = document.getElementById('time') 
   const graph = document.querySelector('.graph2');
   const chart = new LineChart('200', '160');
   const timeSelection = {
