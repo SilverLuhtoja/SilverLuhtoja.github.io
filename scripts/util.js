@@ -103,18 +103,3 @@ export function combineDates(arr) {
   }
   return newArr.filter(item => item);
 }
-
-// sort by dates
-export function sortByDates(arr) {
-  for (let j = 0; j < arr.length - 1; j++) {
-    if (
-      new Date(arr[j].createdAt).getTime() >
-      new Date(arr[j + 1].createdAt).getTime()
-    ) {
-      let tmp = arr[j];
-      arr[j] = arr[j + 1];
-      arr[j + 1] = tmp;
-    }
-  }
-  return arr;
-}

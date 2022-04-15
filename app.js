@@ -1,57 +1,25 @@
-import {
-  getTransactions,
-  getAudits,
-  getName,
-  getSkills,
-  OnlyDivPart,
-  pointsRequestByObjectID,
-  getId,
-} from './scripts/queries.js';
-import {
-  fixTime,
-  queryFetch,
-  calculateTotal,
-  combineDates,
-  sortArray,
-  formatTimeByDays,
-  calculateDays,
-  sortByDates,
-  logQuery,
-} from './scripts/util.js';
-import { Skills } from './svg/skills.js.js';
+import {getTransactions,getAudits,getName,getSkills,OnlyDivPart,pointsRequestByObjectID,} from './scripts/queries.js';
+import {fixTime,  queryFetch,calculateTotal, combineDates,sortArray,formatTimeByDays, calculateDays} from './scripts/util.js';
+import { Skills } from './svg/skills.js';
 import { Audits } from './svg/audits.js';
-import { Exp } from './svg/exp.js.js';
+import { Exp } from './svg/exp.js';
 import { LineChart } from './svg/linechart.js';
 
-// anna_lazarenkova , 3mil
+// "id": 2127, /anna id
+// const id = 1905;
+const id = 932;
 const language = document.getElementById('language');
 const trans_btn = document.querySelector('.trans_btn');
-const name_btn = document.getElementById('name_btn');
-const name_input = document.getElementById('name_input');
 const currentTime = new Date();
 let allSkills,auditsIn,auditsOut,transactionData,total,onlyDIV;
-// first Pass
-let currentName = name_input.value
 let fullDiv = []
 let offset = 0;
 let totalDIVXP = 0
 let current_path = '/johvi/div-01/';
-const getIdQuery = async variables => {
-  return queryFetch(getId, variables).then(data => data.data.user[0].id);
-};
-let id = await getIdQuery({ userName: name_input.value });
 
 
 
-
-
-// Show transactions when arrow is clicked
-trans_btn.addEventListener('click', () => {
-  let projects = document.querySelector('.projects_wrapper');
-  projects.classList.toggle('hide');
-  trans_btn.classList.toggle('rotate');
-});
-
+// ///////////////////////////////////////////////////////////////////////
 language.addEventListener('change', function () {
   switch (this.value) {
     case 'GO':
@@ -64,8 +32,15 @@ language.addEventListener('change', function () {
       current_path = '/johvi/div-01/piscine-js/';
       break;
   }
-  update();
+  update()
 });
+
+// Show transactions when arrow is clicked
+trans_btn.addEventListener('click', (e) => {
+    let projects = document.querySelector('.projects_wrapper')
+    projects.classList.toggle('hide')
+    trans_btn.classList.toggle('rotate')
+})
 
 let allData = [];
 async function fetch(func) {
@@ -73,50 +48,45 @@ async function fetch(func) {
   return await func;
 }
 
-const update = async () => {
+const update = async() =>{
   console.log(`%cCURRENT MODUL IS  ${language.value}`, 'color:orange');
-  console.log("UPDATEING");
   transactionData = await fetch(getAllTransactions());
-  sortByDates(transactionData);
+  getCorrectDates(transactionData);
   populateExpGraph();
   populateTransactions();
-};
+} 
 
 
 const init = async () => {
-  console.log("FETCHING DATA");
   transactionData = await fetch(getAllTransactions());
-  onlyDIV = await divRequest(id);
-  auditsIn = await fetch(getAllAudits(0, 'up'));
-  auditsOut = await fetch(getAllAudits(0, 'down'));
-  allSkills = await fetch(getAllSkills(0));
-  let audits = [calculateTotal(auditsOut), calculateTotal(auditsIn)];
-  populateAuditsGraph(audits);
-  populateFirstGraph(allSkills);
-  populateSecondGraph(onlyDIV);
+  if (language.value == "DIV01") {
+    onlyDIV = await divRequest(id);
+    auditsIn = await fetch(getAllAudits(0, 'up'));
+    auditsOut = await fetch(getAllAudits(0, 'down'));
+    allSkills = await fetch(getAllSkills(0));
+    let audits = [calculateTotal(auditsOut),calculateTotal(auditsIn),];
+    populateAuditsGraph(audits);
+    populateFirstGraph(allSkills);
+    populateSecondGraph(onlyDIV);
+  }
+  printName();
   populateExpGraph();
   populateTransactions();
 };
 
-name_btn.addEventListener('click', async function () {
-  console.log(String(name_input.value));
-  if (currentName != name_input.value) {
-    let lastId = id
-    id = await getIdQuery({ userName: name_input.value }).catch(()=>{
-      return id = getIdQuery({ userName: currentName })
-    })
-      if(id != lastId ){
-        console.log(id);
-        currentName = name_input.value;
-        console.log("NEW NAME:", currentName);
-        totalDIVXP = 0;
-        fullDiv = [];
-        current_path = '/johvi/div-01/';
-        language.value = 'DIV01';
-        await init();
+
+
+function getCorrectDates(arr){
+
+  for(let j = 0 ; j <arr.length-1 ; j++){
+      if (new Date(arr[j].createdAt).getTime() > new Date(arr[j+1].createdAt).getTime()) {
+            let tmp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = tmp;
       }
-    }
-});
+  }
+  return arr
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  AUDITS QUERY //////////////////////////////////////////////////////////////////////////////////////////
@@ -125,10 +95,6 @@ const getAllAudits = async (nr,type) => {
   nr = offset
   let variables = { offset: nr, path: current_path, Id: id, type: type};
   return queryFetch(getAudits, variables).then(data => {
-    console.log(data);
-    if(data.data.transaction.length == 0){
-      return
-    }
     data.data.transaction.forEach(item => allData.push(item));
     if (allData.length % 50 == 0) {
       offset += 50;
@@ -155,10 +121,6 @@ const getAllSkills = async (nr) => {
   let variables = {offset: nr,Id: id};
   return queryFetch(getSkills, variables).then(data => {
     data.data.transaction.forEach(item => allData.push(item));
-     if (allData.length == 0) {
-       console.log(allData);
-       return;
-     }
     if (allData.length % 50 == 0) {
       offset += 50;
       return getAllSkills(variables);
@@ -215,21 +177,17 @@ function getMaxSkills(arr) {
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///  TOP SECTION /////////////////////////////////////////////////////////////////////////////////////////////////
+///  TOP SECTION ////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const getAllTransactions = async (nr) => {
   nr = offset;
   let variables = {offset: nr, path: current_path, Id: id };
   return queryFetch(getTransactions, variables).then(data => {
-    if(data.data.transaction.length == 0 ){
-      return
-    }
     data.data.transaction.forEach(item => allData.push(item));
-    
     if (allData.length % 50 == 0) {
       offset += 50;
-      return getAllTransactions(offset);
+      return getAllTransactions(variables);
     } else {
       offset = 0;
       return allData;
@@ -265,7 +223,7 @@ const populateTransactions = async () => {
   let arr
   if (language.value == 'DIV01'){
     arr = sortArray(onlyDIV);
-    sortByDates(arr);
+    getCorrectDates(arr)
     arr.forEach(item => {
         let exercise = item.object.name;
         let amount = item.object.amount / 1000;
@@ -281,7 +239,7 @@ const populateTransactions = async () => {
       });
   }else{
     arr = transactionData;
-    sortByDates(arr);
+    getCorrectDates(arr);
     arr.forEach(item => {
       let exercise = item.object.name;
       let amount = item.amount / 1000;
@@ -300,6 +258,15 @@ const populateTransactions = async () => {
   div.innerHTML = html;
 };
 
+////////////////////////////////////////////////////////////////////////////////////////////
+// GET PROFILE INFO ////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////
+const printName = async () => {
+  const profile = await queryFetch(getName, { Id: id }).then(data => {
+  return data.data.user[0].login});
+  let who = document.querySelector('.who');
+  who.innerHTML = `Welcome, ${profile}`
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 // GRAPH 1 ////////////////////////////////////////////////////////////////////////////////
@@ -332,6 +299,8 @@ function populateSecondGraph(arr) {
        pastDays: calculateDays(currentTime - new Date(fixTime(item.createdAt)).getTime()),
       };
     })
+
+  console.log(dateArr);
   // For First Run
   let selectedValue = timePeriod.value;
   let svgArr = arr.filter(item => item.pastDays <= timeSelection[selectedValue]);
@@ -355,7 +324,7 @@ function populateSecondGraph(arr) {
 }
 
 // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// DIV QUERY   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -397,4 +366,5 @@ async function calculatePoints(objectId) {
   });
 }
 
-await init();
+  init();
+

@@ -1,15 +1,6 @@
 export const getName = `
-        query AuthenticationName($Id: Int){
+        query Authentication($Id: Int){
             user(where: { id: { _eq: $Id }}) 
-            {
-                id
-                login
-            }
-        }
-`;
-export const getId = `
-        query AuthenticationId($userName: String){
-            user(where: { login: { _eq: $userName }}) 
             {
                 id
                 login

@@ -1,10 +1,9 @@
 /* GLOBAL VARIABLES */
-
 :root{
     /* Background Colors */
     --main-color: #585858b5;
     --background-color: #2a2a2a;
-    --fourth-color:#48895ee6;
+    --fourth-color:#48895ef8;
     --fifth-color :#3e7d77dd;
 
     /* FONT */
@@ -27,6 +26,7 @@ body{
    background:var(--background-color);
    color: var(--text-color);
    min-width: var(--min-width);
+   /* overflow: hidden; */
 }
 
 .flex{
@@ -87,118 +87,37 @@ section#profile .exp_wrapper {
     }
     50%{
         box-shadow: 0 0 10px var(--fifth-color);
+        
     }
     100%{
         box-shadow: 0 0 1px var(--fifth-color);
-    }
-}
-@keyframes blinkText {
-    0%{
-        text-shadow: 0 0 0px white;
-    }
-    50%{
-        text-shadow: 0 0 4px rgba(242, 201, 0, 0.774);
-        border-color:rgba(238, 232, 72, 0.462) ;
-    }
-    100%{
-        text-shadow: 0 0 0px white;
     }
 }
 
 
 /* WELCOME WRAPPER **************************************************/
 section#profile .welcome_wrapper{
-    /* height: 8vh; */
-    min-width: var(--min-width);
-    /* padding: 1.5em 0 ; */
+    height: 8vh;
+    width: 100%;
+    padding: 1.5em 0 ;
     justify-content: space-between;
     font-size: var(--big-font);
     letter-spacing:var(--letter-spacing);
     flex-wrap: nowrap;
-    
 }
-.input_box{
-    display: flex;
-    /* justify-content: start; */
-    /* flex-direction: row; */
-    place-items: end; 
-    flex-wrap: wrap;
-    position: relative;
-}
-.input_box h3{
-    width: 200px;
-}
-#name_input{
-    font-size: 24px;
-    letter-spacing: var(--letter-spacing);
-    background: none;
-    width: 220px;
-    /* margin: 4px; */
-    margin-left: 4px;
-    border: none;
-    border-bottom: 2px solid white;
-    color: var(--text-color);
-    outline-style: none;
-    animation-name: blinkText;
-    animation-duration: 2s;
-    animation-iteration-count: 5;
-}
-
-#name_btn{
-    display: flex;
-    position: absolute;
-    left: 220px;
-    bottom:10px;
-    justify-content: center;
-    place-items: center;
-    width: 32px;
-    height: 32px;
-    /* margin-left: 10px; */
-    font-size: 24px;
-    border: 0.5px solid white;
-    border-radius: 50%;    
-    background: none;
-    color: var(--text-color);
-    cursor: pointer;
-}
-#name_btn:hover {
-    background-color: rgba(245, 222, 179, 0.186);
-}
-
-
 section#profile .welcome_wrapper .language_wrapper select{
-    height:  10vh;
+    height:  8vh;
     font-size: var(--big-font);
     text-align: center;
     color: var(--text-color);
     background-color: var(--fourth-color);
-    transition: 0.5s all ease;
 }
-section#profile .welcome_wrapper .language_wrapper select:hover {
-    background-color: #3e7d77dd;
-}
-
 
 section#profile .welcome_wrapper h3{
-    margin-left: 4px;
+    margin-left: 10px;
 }
 
-@media only screen and (min-width: 550px) {
-    .input_box h3 {
-        width: 120px;
-    }
-    #name_btn {
-        position: unset;
-    }
-    section#profile .welcome_wrapper .language_wrapper select {
-        height:  6vh;
-
-    }
-    section#profile .welcome_wrapper h3 {
-        margin-left: 10px;
-    }
-}
-/* PROJECTS WRAPPER ***********************************************/
+ /* PROJECTS WRAPPER ***********************************************/
 section#profile .projects_wrapper .projects_title{
     justify-content: space-between;
     padding: 6px;
