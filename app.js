@@ -81,15 +81,16 @@ const update = async () => {
 
 
 const init = async () => {
-  console.log("FETCHING DATA");
-  transactionData = await fetch(getAllTransactions(0));
-  onlyDIV = await divRequest(id);
-  auditsIn = await fetch(getAllAudits(0, 'up'));
-  auditsOut = await fetch(getAllAudits(0, 'down'));
-  allSkills = await fetch(getAllSkills(0));
-  if(auditsIn == undefined || auditsOut == undefined || onlyDIV == undefined || allSkills == undefined){
-    alert("Could not fetch data")
-  }
+ console.log('FETCHING DATA');
+ transactionData = await fetch(getAllTransactions(0));
+ onlyDIV = await divRequest(id);
+ offset = 0;
+ auditsIn = await fetch(getAllAudits(0, 'up'));
+ auditsOut = await fetch(getAllAudits(0, 'down'));
+ allSkills = await fetch(getAllSkills(0));
+ if (auditsIn == undefined ||auditsOut == undefined ||onlyDIV == undefined ||allSkills == undefined) {
+   alert('Could not fetch data');
+ }
   let audits = [calculateTotal(auditsOut), calculateTotal(auditsIn)];
   populateAuditsGraph(audits);
   populateExpGraph();
