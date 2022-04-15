@@ -3,6 +3,7 @@
 svg text{
     z-index: 100;
 }
+
 .graph1{
     z-index: 0;
     min-width: var(--min-width);
@@ -16,13 +17,16 @@ svg text{
     margin-top: 1em;
     margin-bottom: 1em;
 }
+
 .exp_circle circle{
     fill: var(--fifth-color);
     stroke: var(--fourth-color);
 }
+
 .exp_circle rect{
     fill: var(--fourth-color);
 }
+
 .text {
     fill:var(--text-color); ;
     text-anchor: middle;
@@ -38,69 +42,83 @@ svg text{
     width: 100%;
     max-width: 500px;
 }
+
 .audit_container{
     fill: var(--main-color);
 }
+
 .bar1{
     fill: #2c6758de;
 }
+
 .bar2{
     fill: #973222a1;
 }
+
 .bar3{
     fill: #3f9a5dc8;
 }
+
 .ratio_text{
     font-size: 6px;
 }
+
 /*  SKILL GRAPH ******************************/
+
 .skill_graph{
     fill: var(--text-color);
-    /* width: 500px; */
 }
+
 /* TIME GRAPh  ////////////////////////////////*/
+
 .time_graph{
     position: relative;
-    /* width: 500px; */
 }
+
 .time_graph polyline{
     stroke: var(--fifth-color);
 }
+
 .time_container{
     fill: var(--main-color);
     opacity: 0.5;
     stroke-width: 0.5;
     stroke: var(--text-color);
 }
+
 .time_selection{
     position: absolute;
     font-size: var(--big-font);
     top: 10%;
 }
+
 .single_point .time_text{
     opacity: 0;
     transition: all 0.5s ease;
 }
+
 .single_point{
     cursor: pointer;
 }
+
 .single_point circle{
     transition: all 0.5s ease;
     stroke-width: 0;
     stroke: black;
     fill: var(--text-color);
 }
+
 .single_point:hover circle{
     cursor: pointer;
     stroke-width: 0.5;
     stroke: rgba(203, 203, 8, 0.761);
 }
-
-/* .single_point:hover > .time_text { */
+    
 .point_text{
     opacity: 0;
     pointer-events: none;
 }
+
 .single_point:hover > .point_text {
     opacity: 1;
     transform-origin: 50%;
@@ -116,13 +134,13 @@ select{
     color: var(--text-color);
     background-color: var(--fourth-color);
 }
+
 .graph2 {
     fill: var(--background-color);
     min-width: var(--min-width);
     width: 100%;
     font-size: 6px;
     max-width: 800px;
-
 }
 
 @media only screen and (min-width: 600px) {

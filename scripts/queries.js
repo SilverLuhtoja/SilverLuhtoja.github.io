@@ -1,12 +1,3 @@
-export const getName = `
-        query AuthenticationName($Id: Int){
-            user(where: { id: { _eq: $Id }}) 
-            {
-                id
-                login
-            }
-        }
-`;
 export const getId = `
         query AuthenticationId($userName: String){
             user(where: { login: { _eq: $userName }}) 
@@ -17,7 +8,6 @@ export const getId = `
         }
 `;
 
-// distinct_on: objectId
 export const getTransactions = `
 query Transactions($offset: Int, $Id : Int, $path: String) {
     transaction(
@@ -41,8 +31,6 @@ query Transactions($offset: Int, $Id : Int, $path: String) {
         }
 `;
 
-
-
 export const getAudits = `
 query Transactions($offset: Int, $Id : Int, $path: String, $type: String) {
     transaction(
@@ -65,8 +53,6 @@ query Transactions($offset: Int, $Id : Int, $path: String, $type: String) {
         }
 `;
 
-
-
 export const getSkills = `
    query getSkills($Id: Int, $offset: Int) {
       transaction(
@@ -79,7 +65,6 @@ export const getSkills = `
       }
     }
 `;
-
 
 export const OnlyDivPart = `
   query($Id: Int){ progress 

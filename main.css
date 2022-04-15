@@ -38,9 +38,11 @@ body{
 /* /////////////////////////////////////////////////////////////////////////////////////// */
 /*   PROFILE  SECTION //////////////////////////////////////////////////////////////////// */
 /* /////////////////////////////////////////////////////////////////////////////////////// */
+
 section#profile{
     font-size: var(--med-font);
 }
+
 section#profile .projects_wrapper {
     height: 38vh;
     background-color: var(--main-color);
@@ -50,6 +52,7 @@ section#profile .projects_wrapper {
     color: var(--text-color);
     transition: 1s all ease;
 }
+
 section#profile .exp_wrapper {
     margin: 0.5em;
     background-color: var(--main-color);
@@ -72,6 +75,7 @@ section#profile .exp_wrapper {
     cursor: pointer;
 
 }
+
 .rotate{
     transform: rotate(-450deg);
     box-shadow: 0 0 1px white;
@@ -80,6 +84,7 @@ section#profile .exp_wrapper {
     animation-iteration-count: infinite;
 
 }
+
 @keyframes blink {
     0%{
         box-shadow: 0 0 1px var(--fifth-color);
@@ -91,6 +96,7 @@ section#profile .exp_wrapper {
         box-shadow: 0 0 1px var(--fifth-color);
     }
 }
+
 @keyframes blinkText {
     0%{
         text-shadow: 0 0 0px white;
@@ -107,32 +113,30 @@ section#profile .exp_wrapper {
 
 /* WELCOME WRAPPER **************************************************/
 section#profile .welcome_wrapper{
-    /* height: 8vh; */
     min-width: var(--min-width);
-    /* padding: 1.5em 0 ; */
     justify-content: space-between;
     font-size: var(--big-font);
     letter-spacing:var(--letter-spacing);
     flex-wrap: nowrap;
     
 }
+
 .input_box{
     display: flex;
-    /* justify-content: start; */
-    /* flex-direction: row; */
     place-items: end; 
     flex-wrap: wrap;
     position: relative;
 }
+
 .input_box h3{
     width: 200px;
 }
+
 #name_input{
     font-size: 24px;
     letter-spacing: var(--letter-spacing);
     background: none;
     width: 220px;
-    /* margin: 4px; */
     margin-left: 4px;
     border: none;
     border-bottom: 2px solid white;
@@ -152,7 +156,6 @@ section#profile .welcome_wrapper{
     place-items: center;
     width: 32px;
     height: 32px;
-    /* margin-left: 10px; */
     font-size: 24px;
     border: 0.5px solid white;
     border-radius: 50%;    
@@ -164,7 +167,6 @@ section#profile .welcome_wrapper{
     background-color: rgba(245, 222, 179, 0.186);
 }
 
-
 section#profile .welcome_wrapper .language_wrapper select{
     height:  10vh;
     font-size: var(--big-font);
@@ -173,10 +175,10 @@ section#profile .welcome_wrapper .language_wrapper select{
     background-color: var(--fourth-color);
     transition: 0.5s all ease;
 }
+
 section#profile .welcome_wrapper .language_wrapper select:hover {
     background-color: #3e7d77dd;
 }
-
 
 section#profile .welcome_wrapper h3{
     margin-left: 4px;
@@ -197,6 +199,7 @@ section#profile .welcome_wrapper h3{
         margin-left: 10px;
     }
 }
+
 /* PROJECTS WRAPPER ***********************************************/
 section#profile .projects_wrapper .projects_title{
     justify-content: space-between;
@@ -207,11 +210,13 @@ section#profile .projects_wrapper .projects_title{
 section#profile .projects_wrapper .projects_total{
     font-size: var(--big-font);
 }
+
 section#profile .projects_wrapper .all_projects{
     overflow: auto;
     height: 86%;
     padding-bottom: 20px;
 }
+
 section#profile .projects_wrapper .single_project{
     font-size: var(--small-font);
     justify-content: start;
@@ -223,26 +228,23 @@ section#profile .projects_wrapper .single_project{
 section#profile .projects_wrapper .single_project .single_project_type{
     width:80px;
 }
+
 section#profile .projects_wrapper .single_project .single_project_name{
     text-align: left;
     margin-left: 1em;
     width: 300px;
     overflow: hidden;
-
 }
 
 section#profile .projects_wrapper .single_project .single_project_time{
     flex: 2;
     text-align: left;
-    
 }
+
 section#profile .projects_wrapper .single_project .single_project_exp{
     flex: 1;
     text-align: left;
 }
-
-
-
 
 /************************************************************************************************/
 /* SECTION STATISTICS ***************************************************************************/
@@ -252,6 +254,7 @@ section#profile .projects_wrapper .single_project .single_project_exp{
     justify-content: start;
     flex-direction: column;
 }
+
 .statistics h1{
     width: 100%;
     background-color: var(--main-color);
@@ -260,7 +263,6 @@ section#profile .projects_wrapper .single_project .single_project_exp{
     display: block;
     text-align: center;
 }
-
 
 @media only screen and (max-width: 600px) {
     section#profile .projects_wrapper .single_project .single_project_name {
